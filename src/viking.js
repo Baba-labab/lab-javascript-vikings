@@ -81,9 +81,8 @@ class Saxon extends Soldier {
         
             if (randomSaxon.health <= 0) {
                 this.saxonArmy.splice(randomSaxonIndex, 1);
-            } else {
-                return result;
             }
+            return result;
         }
 
         saxonAttack() {
@@ -97,10 +96,8 @@ class Saxon extends Soldier {
         
             if (randomViking.health <= 0) {
                 this.vikingArmy.splice(randomVikingIndex, 1);
-            } else {
-                return result; 
             }
-
+            return result;
         }    
         
         showStatus() {
