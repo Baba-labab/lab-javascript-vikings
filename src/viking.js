@@ -74,10 +74,10 @@ class Saxon extends Soldier {
 //Remove Dead Saxon from army
 //return result of calling receiveDamage() of a Saxon
         vikingAttack() {
-            let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length)+1; 
+            let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length); 
             let randomSaxon = this.saxonArmy[randomSaxonIndex];
 
-            let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length)+1;
+            let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
             let randomViking = this.vikingArmy[randomVikingIndex];
 
          randomSaxon.receiveDamage(randomViking.strength);
@@ -85,13 +85,35 @@ class Saxon extends Soldier {
             if (randomSaxon.health <= 0) {
                 this.saxonArmy.splice(randomSaxonIndex, 1);
             } else {
-                return randomSaxon.health; 
+                return receiveDamage(damage);
             }
         }
 
 //Saxon version of vikingAttack
-//Viking receives damage equal to the strength of a Saxon
         saxonAttack() {
+            let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length); 
+            let randomSaxon = this.saxonArmy[randomSaxonIndex];
 
-        }          
+            let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
+            let randomViking = this.vikingArmy[randomVikingIndex];
+
+         randomViking.receiveDamage(randomSaxon.strength);
+        
+            if (randomViking.health <= 0) {
+                this.vikingArmy.splice(randomVikingIndex, 1);
+            } else {
+                return receiveDamage(damage); 
+            }
+
+        }    
+        
+        showStatus() {
+            if (this.saxonArmy.length === 0) {
+                return `Vikings have won the war of the century!`
+            } else if (this.vikingArmy.length === 0) {
+                return  `Saxons have fought for their lives and survived another day...`
+            } else {
+                return `Vikings and Saxons are sill in the thick of battle.`
+            }
+        }
 } 
