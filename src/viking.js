@@ -69,10 +69,7 @@ class Saxon extends Soldier {
         addSaxon(saxon) {
             this.saxonArmy.push(saxon);
         }
-// Saxon chosen at random
-//Saxon receiveDamage() equal to strength of a Viking
-//Remove Dead Saxon from army
-//return result of calling receiveDamage() of a Saxon
+
         vikingAttack() {
             let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length); 
             let randomSaxon = this.saxonArmy[randomSaxonIndex];
@@ -80,16 +77,15 @@ class Saxon extends Soldier {
             let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
             let randomViking = this.vikingArmy[randomVikingIndex];
 
-         randomSaxon.receiveDamage(randomViking.strength);
+            let result = randomSaxon.receiveDamage(randomViking.strength);
         
             if (randomSaxon.health <= 0) {
                 this.saxonArmy.splice(randomSaxonIndex, 1);
             } else {
-                return receiveDamage(damage);
+                return result;
             }
         }
 
-//Saxon version of vikingAttack
         saxonAttack() {
             let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length); 
             let randomSaxon = this.saxonArmy[randomSaxonIndex];
@@ -97,12 +93,12 @@ class Saxon extends Soldier {
             let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
             let randomViking = this.vikingArmy[randomVikingIndex];
 
-         randomViking.receiveDamage(randomSaxon.strength);
+            let result = randomViking.receiveDamage(randomSaxon.strength);
         
             if (randomViking.health <= 0) {
                 this.vikingArmy.splice(randomVikingIndex, 1);
             } else {
-                return receiveDamage(damage); 
+                return result; 
             }
 
         }    
@@ -113,7 +109,7 @@ class Saxon extends Soldier {
             } else if (this.vikingArmy.length === 0) {
                 return  `Saxons have fought for their lives and survived another day...`
             } else {
-                return `Vikings and Saxons are sill in the thick of battle.`
+                return `Vikings and Saxons are still in the thick of battle.`
             }
         }
 } 
